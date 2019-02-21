@@ -21,7 +21,11 @@ class LibraryReissuer:
         self.response = None
         self.mailer = smtplib.SMTP('smtp.gmail.com', 587)
         self.mailer.starttls()
-        self.mailer.login(mail_username, mail_password)
+        try:
+            self.mailer.login(mail_username, mail_password)
+        except SMTPAuthenticationError:
+            print("Wrong GMail Password.")
+            sys.exit()
         print("Logged in. SMTP.")
         self.mail_username = mail_username
         self.mail_password = mail_password
