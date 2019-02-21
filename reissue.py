@@ -44,7 +44,7 @@ class LibraryReissuer:
             self.browser.close()
             sys.exit()
         else:
-            print("Logged In!")
+            print("Logged In!\n")
             self.my_info_page = self.browser.get_current_page()
 
     def check(self):
@@ -72,7 +72,7 @@ class LibraryReissuer:
                 self.index += 1
             for key, value in self.user_data.items():
                 print(value['name'] + " :: " + str(value['time_remaining']))
-                if value['time_remaining'] <= 1:
+                if value['time_remaining'] <= 0:
                     print("Time to reissue.")
                     if "disabled" in str(value['reissue_button']):
                         self.mail_type = "Manual Reissue :: "
@@ -94,8 +94,8 @@ class LibraryReissuer:
                         self.current_book_data = value
                         self.send_mail()
                         # return "Error Occured"
-                elif value['time_remaining'] == 2:
-                    self.mail_type = "Two Days left :: "
+                elif value['time_remaining'] == 1:
+                    self.mail_type = "One Day left :: "
                     self.current_book_data = value
                     self.send_mail()
                     # todo send notification via mail or message
@@ -135,7 +135,7 @@ class LibraryReissuer:
             'Manual Reissue :: ': 'The reissue limit for the book {} is over. Please reissue it manually.',
             'Reissued :: ': 'Book {} reissued.',
             'Error :: ': 'Some error occured in reissueing the book {}.',
-            'Two Days left :: ': 'Two days remaining from due date for book {}. If it is to be returned please do it immediatly.'
+            'One Day left :: ': 'One day remaining from due date for book {}. If it is to be returned please do it immediately.'
         }
         SUBJECT = self.mail_type + " " + self.current_book_data['name']
         TEXT = option_dict[self.mail_type].format(self.current_book_data['name'])
