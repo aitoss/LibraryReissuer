@@ -1,10 +1,10 @@
 # LibraryReissuer
-  This is an application to reissue the books which have reached it's due date
+  This is an application to reissue the books which have reached its due date.
   
 ## Features
 * No Clicks required: Provide username(reg no.) and password in Terminal and get rid of unnecessary clicks.
-* Auto-Reissue: Reissues book if it reached it's due date.
-* Reminder: If only one day is left then you get reminder to reissue your book immediately.
+* Auto-Reissue: Reissues book if it reached its due date.
+* Reminder: If only one day is left then you get reminder to reissue/return your book immediately.
 * Mailer: A mail using SMTP is sent if the books are reissued automaticaly or they can't be ressued online anymore.
 
 ## Setup
