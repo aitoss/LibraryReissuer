@@ -118,7 +118,7 @@ class LibraryReissuer:
         if self.response.status_code != 200:
             print("Not able to reissue. Sorry :(")
             return False
-        print("Book {} Reissued :)".format(value['name']))
+        print(f"Book {value['name']} Reissued :)")
         return True
 
     def flow(self):
@@ -137,9 +137,9 @@ class LibraryReissuer:
             'Error :: ': 'Some error occured in reissueing the book {}.',
             'One Day left :: ': 'One day remaining from due date for book {}. If it is to be returned please do it immediately.'
         }
-        SUBJECT = self.mail_type + " " + self.current_book_data['name']
+        SUBJECT = f"{self.mail_type} {self.current_book_data['name']}"
         TEXT = option_dict[self.mail_type].format(self.current_book_data['name'])
-        message = 'Subject: {}\n\n{}'.format(SUBJECT, TEXT)
+        message = f"Subject: {SUBJECT}\n\n{TEXT}"
 
         self.mailer.sendmail(self.mail_username, self.mail_username, message)
 

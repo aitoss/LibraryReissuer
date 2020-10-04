@@ -21,5 +21,5 @@ Enter Directory
 run python file
 `python3 reissue.py`
 
-## Scope
-* to make chronjob so that python script runs automatically once a day.
+## To-Do
+* to make chon-job so that python script runs automatically once a day.
